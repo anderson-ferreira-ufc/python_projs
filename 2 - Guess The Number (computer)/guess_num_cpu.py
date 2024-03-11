@@ -5,22 +5,14 @@ import random
 def guess(n):
     rand_num = random.randint(0, n)
     guess = 0
-    tries = 3
 
-    while tries > 0:
-        guess = int(input(f"Guess a number between 1 and {n} ({tries} tries): "))
+    while rand_num != guess:
+        guess = int(input(f"Guess a number between 1 and {n}: "))
         if guess < rand_num:
-            tries-=1
-            print(f"Sorry, try again! Too low! ({tries} tries):(")
+            print(f"Sorry, try again! Too low!")
         elif guess > rand_num:
-            tries-=1
-            print(f"Sorry, try again! Too high! ({tries} tries)")
-        else:
-            break
-    
-    if tries == 0:
-        print(f"You lose, the correct number is {rand_num} :(")
-    else:
-        print(f"Yay! You've guessed the right number, which is {rand_num}!")
+            print(f"Sorry, try again! Too high! ")
+
+    print(f"Yay! You've guessed the right number, which is {rand_num}!")
 
 guess(10)
