@@ -3,7 +3,7 @@
 import random
 
 def guess(n):
-    rand_num = random.randint(1, n + 1)
+    rand_num = random.randint(0, n)
     guess = 0
     tries = 3
 
@@ -15,9 +15,11 @@ def guess(n):
         elif guess > rand_num:
             tries-=1
             print(f"Sorry, try again! Too high! ({tries} tries)")
+        else:
+            break
     
     if tries == 0:
-        print("You lose :()")
+        print(f"You lose, the correct number is {rand_num} :(")
     else:
         print(f"Yay! You've guessed the right number, which is {rand_num}!")
 
