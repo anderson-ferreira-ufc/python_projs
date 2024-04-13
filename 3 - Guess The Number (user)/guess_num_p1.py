@@ -1,24 +1,25 @@
-# 2 - Guess The Number (computer)
+# 3 - Guess The Number (computer)
 
 import random
 
-def guess(n):
-    rand_num = random.randint(1, n + 1)
-    guess = 0
-    tries = 3
-
-    while tries > 0:
-        guess = int(input(f"Guess a number between 1 and {n} ({tries} tries): "))
-        if guess < rand_num:
-            tries-=1
-            print(f"Sorry, try again! Too low! ({tries} tries):(")
-        elif guess > rand_num:
-            tries-=1
-            print(f"Sorry, try again! Too high! ({tries} tries)")
+def cpu_guess(n):
+    low = 1
+    high = n
+    feedback = ''
     
-    if tries == 0:
-        print("You lose :()")
-    else:
-        print(f"Yay! You've guessed the right number, which is {rand_num}!")
+    while feedback != 'c':
+        if low != high:
+            guess = random.randint(low, n)
+        else:
+            guess = low
+        
+        feedback = input(f"Is {guess} too high (H), too low (L) or correct (C)?: ".lower())
 
-guess(10)
+        if feedback == 'h':
+            high = guess - 1
+        elif feedback == 'l':
+            low = guess + 1
+    
+    print(f"Yay! The computer guessed your number right, which is {guess}")
+
+cpu_guess(30)
